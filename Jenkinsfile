@@ -4,19 +4,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('clone repo and clean') {
             steps {
-                echo 'Building..'
+                bat "git clone https://github.com/JenkinsDevOpsAIG/groovy-pipeline.git"
+                bat "mvn clean -f groovy-pipeline"
+                echo 'cloned repo..Done'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                bat "mvn test -f groovy-pipeline"
+                
+                echo 'Testing..Done'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                bat "mvn deploy -f groovy-pipeline"
+                echo 'Deploying....Done'
             }
         }
     }
