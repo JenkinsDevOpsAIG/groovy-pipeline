@@ -2,8 +2,15 @@
 // Jenkinsfile (Declarative Pipeline)
 pipeline {
     agent any
-
+    
     stages {
+        stage(checkout){
+         checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+                      doGenerateSubmoduleConfigurations: false, 
+                      extensions: [], 
+                      submoduleCfg: [], 
+                      userRemoteConfigs: [[url: 'https://github.com/JenkinsDevOpsAIG/groovy-pipeline.git']]])
+        }
         stage('clone repo and clean') {
             steps {
                 bat "rm -rf groovy-pipeline"
