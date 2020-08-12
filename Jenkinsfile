@@ -15,7 +15,7 @@ pipeline {
         }
         stage('clone repo and clean') {
             steps {
-                bat "del /s groovy-pipeline"
+                bat "del groovy-pipeline"
                 bat "git clone https://github.com/JenkinsDevOpsAIG/groovy-pipeline.git"
                 //bat "mvn clean -f groovy-pipeline"
                 echo 'cloned repo..Done'
