@@ -24,6 +24,7 @@ pipeline {
         stage('Test') {
             steps {
                 //bat "mvn test -f groovy-pipeline"
+                bat "git status https://github.com/JenkinsDevOpsAIG/groovy-pipeline.git"
                 
                 echo 'Testing..Done'
             }
